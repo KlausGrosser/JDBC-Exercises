@@ -184,22 +184,4 @@ public class ExercisesSolutions {
         return employees;
     }
 
-    public static void describeTable() {
-        String qryTableRead = "SELECT * FROM Employees";
-
-        Statement stmt = null;
-        try {
-            stmt = connect().createStatement();
-            ResultSet rs = stmt.executeQuery(qryTableRead);
-            ResultSetMetaData rsm = rs.getMetaData();
-            System.out.printf("%s - %s%n", "Column Name", "Datatype");
-            for(int i=1; i<rsm.getColumnCount(); i++) {
-                System.out.printf("%s - %s%n", rsm.getColumnLabel(i), rsm.getColumnTypeName(i));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            close(stmt);
-        }
-    }
 }
